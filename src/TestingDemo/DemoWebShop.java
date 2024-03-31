@@ -1,0 +1,104 @@
+package TestingDemo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DemoWebShop {
+	public static void main(String[] args) throws InterruptedException {
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demowebshop.tricentis.com/login");
+		Thread.sleep(2000);
+		Dimension captureSize = driver.manage().window().getSize();
+		System.out.println(captureSize + ":captureSize");
+		Point captureCursor = driver.manage().window().getPosition();
+		System.out.println(captureCursor + ":captureCursor");
+		Thread.sleep(1000);
+		String captureUrl = driver.getCurrentUrl();
+		System.out.println(captureUrl);
+		String captureSeccionId = driver.getWindowHandle();
+		System.out.println("captureSessionId: " + captureSeccionId);
+		Thread.sleep(1000);
+		driver.findElement(By.linkText("Log in")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("Email")).sendKeys("jacksonsatya25@gmail.com");
+		Thread.sleep(2000);
+		driver.findElement(By.id("Password")).sendKeys("Satya@2001");
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@value='Log in']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.linkText("Computers")).click();
+		Thread.sleep(2000);
+		String captureText = driver.findElement(By.linkText("Notebooks")).getText();
+		System.out.println(captureText);
+		driver.findElement(By.linkText("Notebooks")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@value='Add to cart']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.linkText("Shopping cart")).click();
+		/*
+		 * WebElement clear =
+		 * driver.findElement(By.xpath("//input[@fdprocessedid='leuyz']"));
+		 * clear.clear(); Thread.sleep(2000); clear.sendKeys("20");
+		 */
+		Thread.sleep(2000);
+		driver.findElement(By.id("checkout")).click();
+		Thread.sleep(2000);
+		String captureTheText = driver.findElement(By.id("terms-of-service-warning-box")).getText();
+		System.out.println(captureTheText);
+		driver.findElement(By.xpath("//button[@title='close']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("termsofservice")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.id("CountryId")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("CountryId")).sendKeys("India");
+		Thread.sleep(2000);
+		driver.findElement(By.id("ZipPostalCode")).sendKeys("34567");
+		driver.findElement(By.id("checkout")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("billing-address-select")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='New Address']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.id("BillingNewAddress_CountryId")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//option[text()='India']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("BillingNewAddress_City")).sendKeys("Bangalore");
+		Thread.sleep(2000);
+		driver.findElement(By.id("BillingNewAddress_Address1")).sendKeys("Budigere cross");
+		Thread.sleep(2000);
+		driver.findElement(By.id("BillingNewAddress_Address2")).sendKeys("Hoskote");
+		Thread.sleep(2000);
+		driver.findElement(By.id("BillingNewAddress_ZipPostalCode")).sendKeys("567034");
+		Thread.sleep(2000);
+		driver.findElement(By.id("BillingNewAddress_PhoneNumber")).sendKeys("8328873489");
+		Thread.sleep(1000);
+		driver.findElement(By.id("BillingNewAddress_FaxNumber")).sendKeys("69696969");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@title='Continue'])[1]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@title='Continue'])[2]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@onclick='ShippingMethod.save()']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='Cash On Delivery (COD) (7.00)']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@type='button'])[5]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@onclick='PaymentInfo.save()']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@onclick='ConfirmOrder.save()']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@class='button-2 order-completed-continue-button']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.linkText("Log out")).click();
+		Thread.sleep(2000);
+		System.out.println("Testing successfully completed");
+		driver.quit();
+	}
+}
